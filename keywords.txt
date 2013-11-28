@@ -1,0 +1,11 @@
+Car	KEYWORD1
+forward	KEYWORD2
+back	KEYWORD2
+stop	KEYWORD2
+straight	KEYWORD2
+left	KEYWORD2
+right	KEYWORD2
+ping	KEYWORD2
+pingLeft	KEYWORD2
+pingRight	KEYWORD2
+pause	KETWORD2
