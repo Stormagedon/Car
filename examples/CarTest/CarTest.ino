@@ -3,6 +3,10 @@
 #include <AFMotor.h>
 #include <Car.h>
 
+/*  Copyright 2013 Steve Mullarkey
+  Licensed under the Apache License, Version 2.0 */
+
+
 // Rear Servo on Pin 9 (Servo1)
 // Front Servo on Pin 10 (Servo2)
 // Motor using Motor 1 connector on Motor Shield

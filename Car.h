@@ -1,8 +1,11 @@
 /*
   Car.h - Library for IWM Rocket Avoidance Robot Car.
   Created by Steve Mullarkey, November 18, 2013.
-  Released into the public domain.
+  
+  Copyright 2013 Steve Mullarkey
+  Licensed under the Apache License, Version 2.0
 */
+
 #ifndef Car_h
 #define Car_h
 
