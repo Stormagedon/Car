@@ -12,8 +12,9 @@
 // Motor using Motor 1 connector on Motor Shield
 // Sonar Trigger using pin 15 (A1)
 // Sonar Echo using pin 16 (A2)
+// Laser on pin 19 (A5)
 
-Car car(10,9,1,15,16); 
+Car car(10,9,1,15,16,19); 
 
 void setup()
 {
