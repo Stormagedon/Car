@@ -34,7 +34,9 @@ class Car
         int backServoPin,
         int motorPin,
         int sonarTriggerPin,
-        int sonarEchoPin);
+        int sonarEchoPin,
+        int laserPin);
+
     void forward();
     void back();
     void stop();
@@ -52,6 +54,9 @@ class Car
     int pingLeft();
     int pingRight();
 
+    void laserOn();
+    void laserOff();
+
     void checkServoMotors();
     
   private:
@@ -60,6 +65,7 @@ class Car
 	int _motorPin;
     int _sonarTriggerPin;
     int _sonarEchoPin;
+    int _laserPin;
 
     int _motorSpeed;    
 

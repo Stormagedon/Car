@@ -15,7 +15,8 @@ Car::Car(int frontServoPin,
     int backServoPin,
     int motorPin,
     int sonarTriggerPin,
-    int sonarEchoPin)
+    int sonarEchoPin,
+    int laserPin)
  :    _sonar(sonarTriggerPin, sonarEchoPin),
       _motor(motorPin)
 
@@ -25,12 +26,15 @@ Car::Car(int frontServoPin,
 	_motorPin 		  = motorPin;
 	_sonarTriggerPin = sonarTriggerPin;
 	_sonarEchoPin 	= sonarEchoPin;
+  _laserPin       = laserPin;
 
 //   randomSeed(analogRead(0));  // pin 0 unconnected - use random noise as seed
  
   _motorSpeed = 150;
   _motor.setSpeed(_motorSpeed); // set speed for drive motor - 0 to 255
   _motor.run(RELEASE);  
+
+  pinMode(_laserPin, OUTPUT);     
 
 }
 
@@ -134,6 +138,7 @@ void Car::pause(float pauseTime)
 // ----------------------------------------------------------------//
 int Car::ping()
 {
+  laserOn();
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_AHEAD); 
   delay(SERVO_DELAY); 
@@ -141,6 +146,7 @@ int Car::ping()
   Serial.print("Car : Ping called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
+  laserOff();  
   return _distance;
 }
 
@@ -149,6 +155,7 @@ int Car::ping()
 // ----------------------------------------------------------------//
 int Car::pingLeft()
 {
+  laserOn();
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_LEFT); 
   delay(SERVO_DELAY);  
@@ -156,6 +163,7 @@ int Car::pingLeft()
   Serial.print("Car : PingLeft called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
+  laserOff();  
   return _distance;
 }
 
@@ -164,6 +172,7 @@ int Car::pingLeft()
 // ----------------------------------------------------------------//
 int Car::pingRight()
 {
+  laserOn();  
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_RIGHT); 
   delay(SERVO_DELAY);  
@@ -171,6 +180,7 @@ int Car::pingRight()
   Serial.print("Car : PingRight called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
+  laserOff();  
   return _distance;
 }
 
@@ -197,6 +207,26 @@ void Car::checkServoMotors()
   }
 
 }
+
+
+
+// ----------------------------------------------------------------//
+//              T U R N   L A S E R   O N                          //
+// ----------------------------------------------------------------//
+void Car::laserOn() 
+{
+  digitalWrite(_laserPin, HIGH);   // turn laser on
+}
+
+
+// ----------------------------------------------------------------//
+//              T U R N   L A S E R   O F F                        //
+// ----------------------------------------------------------------//
+void Car::laserOff() 
+{
+  digitalWrite(_laserPin, LOW);   // turn laser off
+}
+
 
 // ----------------------------------------------------------------//
 //              T E S T   S E R V O   M O T O R S                  //
