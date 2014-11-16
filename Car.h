@@ -20,12 +20,18 @@
 #define ANGLE_TURN_LEFT  -45
 #define ANGLE_TURN_AHEAD   0
 #define ANGLE_TURN_RIGHT  45
-#define ANGLE_TURN_OFFSET 90
+#define ANGLE_TURN_OFFSET 80
 
 #define ANGLE_SCAN_LEFT  -45
 #define ANGLE_SCAN_AHEAD   0
 #define ANGLE_SCAN_RIGHT  45
 #define ANGLE_SCAN_OFFSET 90 
+
+enum laserState {
+    on,
+    off,
+    onPing
+};
 
 class Car
 {
@@ -54,11 +60,12 @@ class Car
     int pingLeft();
     int pingRight();
 
+    void laser(laserState ls);
     void laserOn();
     void laserOff();
 
     void checkServoMotors();
-    
+
   private:
     int _frontServoPin;
     int _backServoPin;
@@ -66,6 +73,7 @@ class Car
     int _sonarTriggerPin;
     int _sonarEchoPin;
     int _laserPin;
+    laserState _laserState;
 
     int _motorSpeed;    
 

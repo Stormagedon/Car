@@ -27,6 +27,7 @@ Car::Car(int frontServoPin,
 	_sonarTriggerPin = sonarTriggerPin;
 	_sonarEchoPin 	= sonarEchoPin;
   _laserPin       = laserPin;
+  _laserState     = off;
 
 //   randomSeed(analogRead(0));  // pin 0 unconnected - use random noise as seed
  
@@ -138,15 +139,24 @@ void Car::pause(float pauseTime)
 // ----------------------------------------------------------------//
 int Car::ping()
 {
-  laserOn();
+  if (_laserState == onPing) {
+    laserOn();
+  }
+
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_AHEAD); 
   delay(SERVO_DELAY); 
+
   unsigned int _distance = _sonar.ping_cm(); 
+
   Serial.print("Car : Ping called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
-  laserOff();  
+
+  if (_laserState == onPing) {
+    laserOff();
+  }
+
   return _distance;
 }
 
@@ -155,15 +165,23 @@ int Car::ping()
 // ----------------------------------------------------------------//
 int Car::pingLeft()
 {
-  laserOn();
+  if (_laserState == onPing) {
+    laserOn();
+  }
+
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_LEFT); 
-  delay(SERVO_DELAY);  
+  delay(SERVO_DELAY); 
+
   unsigned int _distance = _sonar.ping_cm(); 
   Serial.print("Car : PingLeft called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
-  laserOff();  
+
+  if (_laserState == onPing) {
+    laserOff();
+  }  
+
   return _distance;
 }
 
@@ -172,15 +190,23 @@ int Car::pingLeft()
 // ----------------------------------------------------------------//
 int Car::pingRight()
 {
-  laserOn();  
+  if (_laserState == onPing) {
+    laserOn();
+  }
+
   checkServoMotors();  
   _frontServo.write(ANGLE_SCAN_OFFSET + ANGLE_SCAN_RIGHT); 
   delay(SERVO_DELAY);  
+
   unsigned int _distance = _sonar.ping_cm(); 
   Serial.print("Car : PingRight called and returned ");
   Serial.print(_distance);
   Serial.println(" cm.");
-  laserOff();  
+
+  if (_laserState == onPing) {
+    laserOff();
+  }  
+  
   return _distance;
 }
 
@@ -208,7 +234,19 @@ void Car::checkServoMotors()
 
 }
 
-
+// ----------------------------------------------------------------//
+//              T U R N   L A S E R   O N                          //
+// ----------------------------------------------------------------//
+void Car::laser(laserState ls) 
+{
+  _laserState = ls;
+  if (_laserState == on) {
+    laserOn();
+  }
+  if (_laserState == off) {
+    laserOff();
+  }
+}
 
 // ----------------------------------------------------------------//
 //              T U R N   L A S E R   O N                          //

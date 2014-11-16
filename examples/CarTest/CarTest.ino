@@ -14,25 +14,26 @@
 // Sonar Echo using pin 16 (A2)
 // Laser on pin 19 (A5)
 
-Car car(10,9,1,15,16,19); 
+Car car(10,9,1,15,16,19);     // Create a car object
 
 void setup()
 {
-  Serial.begin(115200);    // Needed for logging
+  Serial.begin(115200);       // Needed for logging
+  car.laser(onPing);          // Turn laser on while pinging 
 }
 
 void loop()
 {
-  car.straight();
-  car.forward();
-  if (car.ping() < 15) {
-    car.stop();
-    if (car.pingLeft() < car.pingRight()) {
-      car.right();
+  car.straight();             // Steer straight ahead
+  car.forward();              // Turn drive motor on and go forward
+  if (car.ping() < 15) {      // if forward distance less than 15 cm
+    car.stop();               // - stop moving
+    if (car.pingLeft() < car.pingRight()) {   // where is the most space?
+      car.right();            // - steer to the right
     } else {
-      car.left();
+      car.left();             // - steer to the left
     }
-    car.back();
-    car.pause(1);
+    car.back();               // back up
+    car.pause(1);             // - for one second
   }
 }

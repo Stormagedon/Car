@@ -8,4 +8,10 @@ right	KEYWORD2
 ping	KEYWORD2
 pingLeft	KEYWORD2
 pingRight	KEYWORD2
-pause	KETWORD2
+pause	KEYWORD2
+laser  	KEYWORD2
+laserOn	KEYWORD2
+laserOff	KEYWORD2
+setMotorSpeed 	KEYWORD2
+test	KEYWORD2
+checkServoMotors	KEYWORD2
