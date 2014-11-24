@@ -18,7 +18,7 @@ NewPing can be found here : https://code.google.com/p/arduino-new-ping/
 Servo is included with the Arduino IDE.
 
 See the sample Sketch in the examples directory for details on how to use it.
-
+```html
 <h3>Car constructor parameters</h3>
 <table border="1">
 	<tr>
@@ -85,7 +85,7 @@ See the sample Sketch in the examples directory for details on how to use it.
     <tr><td>void test()</td><td>Test front and read servo movement.</td></tr>
 	<tr><td>void checkServoMotors()</td><td>Ensure servero motors are attached.</td></tr>  
 </table>
-
+```
 
 Hope you find it useful and have fun!
 
