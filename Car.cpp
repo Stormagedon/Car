@@ -31,7 +31,7 @@ Car::Car(int frontServoPin,
 
 //   randomSeed(analogRead(0));  // pin 0 unconnected - use random noise as seed
  
-  _motorSpeed = 150;
+  _motorSpeed = 200;
   _motor.setSpeed(_motorSpeed); // set speed for drive motor - 0 to 255
   _motor.run(RELEASE);  
 
