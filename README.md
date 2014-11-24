@@ -25,19 +25,19 @@ See the sample Sketch in the examples directory for details on how to use it.
 		<td>Parameter</td><td>Type</td><td>Name</td><td>Notes</td>
 	</tr>
 	<tr>
-		<td>1</td><td>Int</td><td>frontServoPin</td><td> </td>
+		<td>1</td><td>Int</td><td>frontServoPin</td><td></td>
 	</tr>
 	<tr>
-		<td>1</td><td>Int</td><td>backServoPin</td><td> </td>
+		<td>2</td><td>Int</td><td>backServoPin</td><td></td>
 	</tr>
 	<tr>
-		<td>1</td><td>Int</td><td>motorPin</td><td> </td>
+		<td>3</td><td>Int</td><td>motorPin</td><td></td>
 	</tr>
 	<tr>
-		<td>1</td><td>Int</td><td>sonarTriggerPin</td><td> </td>
+		<td>4</td><td>Int</td><td>sonarTriggerPin</td><td></td>
 	</tr>
 	<tr>
-		<td>1</td><td>Int</td><td>laserPin</td><td>This can also be an LED</td>
+		<td>5</td><td>Int</td><td>laserPin</td><td>This can also be an LED</td>
 	</tr>
 </table>	
 
